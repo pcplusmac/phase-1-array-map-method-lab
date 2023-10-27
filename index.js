@@ -12,14 +12,24 @@ const tutorials = [
 ];
 
 function titleCased() {
-  const tutorialsTitleCase = tutorials.map((item) => {
-    
-    const [0, ...rest] = item.split(" "); 
-    // return subItem.charAt(0).toUpperCase() + subItem.slice(1)
-    return subItem.substring[0,1].toUpperCase() + subItem.slice(1)
-  });
-  return tutorialsTitleCase
+  const tutorialsTitleCase = tutorials.map((title) => {
+    const words = title.split(" ")
+    //  const titleCaseWords = words.map((word) => word[0].toUpperCase() + word.slice(1) ).join(" ")
 
+    const titleCaseWords = words.map((word) => {
+      return word.split("").map((char, index) => {
+        if (index === 0) {
+          return char.toUpperCase()
+        } else {
+          return char
+        }
+      }).join("")
+    }).join(" ")
+    return titleCaseWords
+  })
+
+  return tutorialsTitleCase
 }
-console.log(titleCased())
+
+// console.log(titleCased())
 // console.log(typeof(tutorialsTitleCase),tutorialsTitleCase) 
